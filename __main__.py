@@ -1,5 +1,5 @@
 import imgdataset
-#import model
+import conf_mat
 import train
 import helpers
 import evaluate
@@ -57,10 +57,15 @@ def main(prep = False, mini_batch_size=32, train_preprocessors = False):
             preprocessors[label] = m.to(device)
     
     # Exclude the preprocessors from the training process (otherwise our GPU memory cannot deal with the size of the model)    
+    """
+    The commented lines below where used to combine the preprocessors into one model with adjacency layers. As we did not increase performance, we decided to keep the individual models.
+    However, in case you are curious about our approach we decided to leave them in the code.
+    """
     for m in preprocessors.values():
         for param in m.parameters():
             param.requires_grad = False
 
+    
     # ensamble_model = ensamble.NewEnsamble42(12,10, preprocessors).to(device)
     # optimizer = optim.Adam(m.parameters(),lr=0.005,betas=(0.9,0.999),eps=1e-08,weight_decay=0)
     # criterion = nn.CrossEntropyLoss().to(device)
@@ -72,7 +77,7 @@ def main(prep = False, mini_batch_size=32, train_preprocessors = False):
         model.eval()
     
     #evaluate.evaluate(m)
-    
+    conf_mat.plot_matrix(preprocessors, train_dataset)
     evaluate.multi_evaluate(preprocessors)
 if __name__ == "__main__":
     main(False, 32, False)
