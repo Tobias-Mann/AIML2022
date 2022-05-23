@@ -75,4 +75,4 @@ def main(prep = False, mini_batch_size=32, train_preprocessors = False):
     
     evaluate.multi_evaluate(preprocessors)
 if __name__ == "__main__":
-    main(False, 32, True)
+    main(False, 32, False)

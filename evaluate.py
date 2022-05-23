@@ -43,7 +43,7 @@ def multi_evaluate(models, device="cuda"):
         adjusted_predictions = {}
         for label, predictions in models.items():
             predictions = np.array(img_predictions[label])
-            adjusted_predictions[label]  = (predictions / predictions.std()) # - predictions.mean() 
+            adjusted_predictions[label]  = (predictions - predictions.mean())/predictions.std() 
         
         for (n, img) in tqdm(image_stream(), total=4232):
             image_predictions = {label: adjusted_predictions[label][n] for label in models}
