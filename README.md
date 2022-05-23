@@ -11,4 +11,4 @@ For faster ease of use the *.csv files and *.json files are provided in the repo
 
 ![data dir structure](./images/data_structure.jpg.png)
 
-Last the training of all 10 models may take a long time, for easy replication we provide the state dicts of the trained models wich we used for our submission for download via this <a href='https://drive.google.com/file/d/1nxGq5M5qIvQm4X9b6Bt575R3UG1tFNlA/view?usp=sharing'>link</a>.
+Last the training of all 10 models may take a long time, for easy replication we provide the state dicts of the trained models which we used for our submission for download via this <a href='https://drive.google.com/file/d/1nxGq5M5qIvQm4X9b6Bt575R3UG1tFNlA/view?usp=sharing'>link</a>.
